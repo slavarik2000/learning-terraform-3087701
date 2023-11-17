@@ -18,14 +18,22 @@ data "aws_vpc" "default" {
   default = true
 }
 
-resource "aws_instance" "web" {
-  ami           = data.aws_ami.app_ami.id
-  instance_type = var.instance_type
-
+resource "aws_instance" "blog" {
+  ami                    = data.aws_ami.app_ami.id
+  instance_type          = var.instance_type
   vpc_security_group_ids = [aws_security_group.blog.id]
+
   tags = {
     Name = "Learning Terraform"
   }
+}
+
+resource "aws_security_group" "blog" {
+  name = "blog"
+  tags = {
+    Terraform = "true"
+  }
+  vpc_id = data.aws_vpc.default.id
 }
 
 resource "aws_security_group" "blog" {
