@@ -29,14 +29,6 @@ resource "aws_instance" "blog" {
 }
 
 resource "aws_security_group" "blog" {
-  name = "blog"
-  tags = {
-    Terraform = "true"
-  }
-  vpc_id = data.aws_vpc.default.id
-}
-
-resource "aws_security_group" "blog" {
   name        = "blog"
   description = "Allow http and https in. Allow everything out"
 
