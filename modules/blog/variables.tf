@@ -33,10 +33,10 @@ variable "ami_filter" {
 
 variable "asg_min_size" {
   description = "minimum number of instances in the ASG"
-  default     = 1
+  default     = 0
 }
 
 variable "asg_max_size" {
   description = "maximum number of instances in the ASG"
-  default = 2
+  default = 0
 }
